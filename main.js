@@ -1,11 +1,12 @@
 const choices = ['rock', 'paper', 'scissor'];
-const winners = [];
+let winners = [];
 
 function game() {
     for (let i=1; i <= 5; i++) {
     playRound(i);
     }
     logWins();
+    resetScore();
 }
 
 function computerChoice() {
@@ -63,6 +64,13 @@ function logWins() {
     console.log('Player wins: ', playerWins);
     console.log('Computer wins: ', computerWins);
     console.log('Ties: ', ties);
+    if (playerWins > computerWins) {
+        console.log("You win!")
+    } else if (playerWins < computerWins) {
+        console.log("Computer wins...")
+    } else {
+        console.log("Tie...")
+    }
 }
 
 function logRound(p, c, winner, round) {
@@ -70,9 +78,13 @@ function logRound(p, c, winner, round) {
     console.log('Player chose:', p);
     console.log('Computer chose:', c);
     if (winner == "Tie") {
-        console.log("Tie round");
+        console.log("Tie round")
     } else {
-    console.log(winner, 'won the round');
+        console.log(winner, 'won the round');
     }
+}
+
+function resetScore() {
+    winners = [];
 }
 
